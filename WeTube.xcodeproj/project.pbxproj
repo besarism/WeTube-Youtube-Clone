@@ -12,6 +12,7 @@
 		A2BFB9C01FED823500EAC5AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2BFB9BE1FED823500EAC5AE /* Main.storyboard */; };
 		A2BFB9C21FED823500EAC5AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2BFB9C11FED823500EAC5AE /* Assets.xcassets */; };
 		A2BFB9C51FED823500EAC5AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2BFB9C31FED823500EAC5AE /* LaunchScreen.storyboard */; };
+		A2BFB9CE1FED867F00EAC5AE /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BFB9CD1FED867F00EAC5AE /* VideoCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		A2BFB9C11FED823500EAC5AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A2BFB9C41FED823500EAC5AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A2BFB9C61FED823500EAC5AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A2BFB9CD1FED867F00EAC5AE /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +56,23 @@
 		A2BFB9B91FED823500EAC5AE /* WeTube */ = {
 			isa = PBXGroup;
 			children = (
-				A2BFB9BA1FED823500EAC5AE /* AppDelegate.swift */,
+				A2BFB9CC1FED825000EAC5AE /* Support Files */,
 				A2BFB9BC1FED823500EAC5AE /* ViewController.swift */,
 				A2BFB9BE1FED823500EAC5AE /* Main.storyboard */,
-				A2BFB9C11FED823500EAC5AE /* Assets.xcassets */,
-				A2BFB9C31FED823500EAC5AE /* LaunchScreen.storyboard */,
 				A2BFB9C61FED823500EAC5AE /* Info.plist */,
+				A2BFB9CD1FED867F00EAC5AE /* VideoCell.swift */,
 			);
 			path = WeTube;
+			sourceTree = "<group>";
+		};
+		A2BFB9CC1FED825000EAC5AE /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A2BFB9BA1FED823500EAC5AE /* AppDelegate.swift */,
+				A2BFB9C11FED823500EAC5AE /* Assets.xcassets */,
+				A2BFB9C31FED823500EAC5AE /* LaunchScreen.storyboard */,
+			);
+			path = "Support Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +149,7 @@
 			files = (
 				A2BFB9BD1FED823500EAC5AE /* ViewController.swift in Sources */,
 				A2BFB9BB1FED823500EAC5AE /* AppDelegate.swift in Sources */,
+				A2BFB9CE1FED867F00EAC5AE /* VideoCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,7 +293,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.b3.WeTube;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -296,7 +308,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.b3.WeTube;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
