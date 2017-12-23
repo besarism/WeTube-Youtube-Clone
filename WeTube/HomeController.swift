@@ -22,7 +22,12 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         collectionView?.register(VideoCell.self, forCellWithReuseIdentifier: cellId)
         
         //navBar
-        navigationItem.title = "Home"
+        navigationController?.navigationBar.isTranslucent = false
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
+        titleLabel.textColor = .white
+        titleLabel.text = "Home"
+        titleLabel.font = .systemFont(ofSize: 20)
+        navigationItem.titleView = titleLabel
     }
 
     
@@ -38,7 +43,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 200)
+        let cellHeight = (view.frame.width - 16 - 16) * 9 / 16
+        return CGSize(width: view.frame.width, height: cellHeight + 75)
     }
     
 

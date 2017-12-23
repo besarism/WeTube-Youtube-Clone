@@ -12,11 +12,14 @@ import UIKit
 class VideoCell: BaseCell {
     
     var thumbnailImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.backgroundColor = .blue
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "wwdc"))
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         
         return imageView
     }()
+    
+    
     
     var titleLabel: UILabel = {
         let label = UILabel()
@@ -28,22 +31,24 @@ class VideoCell: BaseCell {
     
     var descriptionTextView: UITextView = {
         let textView = UITextView()
-        textView.backgroundColor = .red
+        textView.textColor = .lightGray
+        textView.textContainerInset = UIEdgeInsets(top: 0, left: -4, bottom: 0, right: 0)
         textView.translatesAutoresizingMaskIntoConstraints = false
         
         return textView
     }()
     
     var profileImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.backgroundColor = .green
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "b3profile"))
+        imageView.layer.cornerRadius = 22
+        imageView.clipsToBounds = true
         
         return imageView
     }()
     
     let separatorLine: UIView = {
         let view = UIView()
-        view.backgroundColor = .black
+        view.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
         
         return  view
     }()
@@ -105,7 +110,7 @@ class VideoCell: BaseCell {
         
         
         //height constraint for the description textView
-        addConstraint(NSLayoutConstraint(item: descriptionTextView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 20))
+        addConstraint(NSLayoutConstraint(item: descriptionTextView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 30))
        
         
         
