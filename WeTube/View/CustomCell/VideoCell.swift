@@ -11,8 +11,30 @@ import UIKit
 
 class VideoCell: BaseCell {
     
+    var video: Video? {
+        didSet {
+            
+            if let thmbnImage = video?.thumbnailImage {
+                thumbnailImageView.image = UIImage(named: thmbnImage)
+            }
+            if let prflImage = video?.channel?.profileImage {
+                profileImageView.image = UIImage(named: prflImage)
+            }
+            titleLabel.text = video?.title
+            if let channelName = video?.channel?.name, let numberOfViews = video?.views {
+                let numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .decimal
+                descriptionTextView.text = "\(channelName) • \(numberFormatter.string(from: numberOfViews)!) • 1 year ago"
+            }
+            
+            
+
+        }
+    }
+    
+    
     var thumbnailImageView: UIImageView = {
-        let imageView = UIImageView(image: #imageLiteral(resourceName: "wwdc"))
+        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         
@@ -23,7 +45,7 @@ class VideoCell: BaseCell {
     
     var titleLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .purple
+        label.backgroundColor = .clear
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
