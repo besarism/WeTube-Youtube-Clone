@@ -26,6 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //bartint color to red
         UINavigationBar.appearance().barTintColor = UIColor(red: 230/255, green: 32/255, blue: 31/255, alpha: 1.0)
         
+        //remove the shadow from navbar
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        
         //status bar color to white
         application.statusBarStyle = .lightContent
         

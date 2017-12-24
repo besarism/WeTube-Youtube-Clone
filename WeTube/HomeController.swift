@@ -14,11 +14,19 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     fileprivate let cellId = "cellId"
     
+    let menuBar: MenuBar = {
+        let mb = MenuBar()
+        
+        return mb
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //collectionView:
         collectionView?.backgroundColor = .white
+        collectionView?.contentInset = UIEdgeInsetsMake(50, 0, 0, 0)
+        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0)
         collectionView?.register(VideoCell.self, forCellWithReuseIdentifier: cellId)
         
         //navBar
@@ -28,10 +36,19 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         titleLabel.text = "Home"
         titleLabel.font = .systemFont(ofSize: 20)
         navigationItem.titleView = titleLabel
+        setupMenuBar()
+        
     }
 
     
     //Methods:
+    
+    private func setupMenuBar() {
+        view.addSubview(menuBar)
+        view.addConstraintsWithFormat(format: "H:|[v0]|", views: menuBar)
+        view.addConstraintsWithFormat(format: "V:|[v0(50)]", views: menuBar)
+    }
+    
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5

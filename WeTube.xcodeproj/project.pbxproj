@@ -13,6 +13,9 @@
 		A2BFB9C21FED823500EAC5AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2BFB9C11FED823500EAC5AE /* Assets.xcassets */; };
 		A2BFB9C51FED823500EAC5AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2BFB9C31FED823500EAC5AE /* LaunchScreen.storyboard */; };
 		A2BFB9CE1FED867F00EAC5AE /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BFB9CD1FED867F00EAC5AE /* VideoCell.swift */; };
+		A2D78E5F1FEFEBFB00842887 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D78E5E1FEFEBFB00842887 /* MenuBar.swift */; };
+		A2D78E611FEFF75A00842887 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D78E601FEFF75A00842887 /* MenuCell.swift */; };
+		A2D78E631FEFF77400842887 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D78E621FEFF77400842887 /* BaseCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		A2BFB9C41FED823500EAC5AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A2BFB9C61FED823500EAC5AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2BFB9CD1FED867F00EAC5AE /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
+		A2D78E5E1FEFEBFB00842887 /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
+		A2D78E601FEFF75A00842887 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		A2D78E621FEFF77400842887 /* BaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,9 +64,12 @@
 			children = (
 				A2BFB9CC1FED825000EAC5AE /* Support Files */,
 				A2BFB9BC1FED823500EAC5AE /* HomeController.swift */,
+				A2D78E5E1FEFEBFB00842887 /* MenuBar.swift */,
 				A2BFB9BE1FED823500EAC5AE /* Main.storyboard */,
 				A2BFB9C61FED823500EAC5AE /* Info.plist */,
 				A2BFB9CD1FED867F00EAC5AE /* VideoCell.swift */,
+				A2D78E601FEFF75A00842887 /* MenuCell.swift */,
+				A2D78E621FEFF77400842887 /* BaseCell.swift */,
 			);
 			path = WeTube;
 			sourceTree = "<group>";
@@ -148,7 +157,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2BFB9BD1FED823500EAC5AE /* HomeController.swift in Sources */,
+				A2D78E611FEFF75A00842887 /* MenuCell.swift in Sources */,
 				A2BFB9BB1FED823500EAC5AE /* AppDelegate.swift in Sources */,
+				A2D78E5F1FEFEBFB00842887 /* MenuBar.swift in Sources */,
+				A2D78E631FEFF77400842887 /* BaseCell.swift in Sources */,
 				A2BFB9CE1FED867F00EAC5AE /* VideoCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
