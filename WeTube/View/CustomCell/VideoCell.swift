@@ -21,12 +21,25 @@ class VideoCell: BaseCell {
                 profileImageView.image = UIImage(named: prflImage)
             }
             titleLabel.text = video?.title
+            //safely unwrapp the name of the channel and the number of views
             if let channelName = video?.channel?.name, let numberOfViews = video?.views {
                 let numberFormatter = NumberFormatter()
                 numberFormatter.numberStyle = .decimal
                 descriptionTextView.text = "\(channelName) • \(numberFormatter.string(from: numberOfViews)!) • 1 year ago"
             }
             
+            //fix the title of the video by measuring the height
+            if let title = video?.title {
+                let size = CGSize(width: frame.width - 15 - 44 - 8 - 16, height: 1000)
+                let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+                let estimatedRect = NSString(string: title).boundingRect(with: size, options: options, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)], context: nil)
+                
+                if estimatedRect.size.height > 20 {
+                    titleLabelHeightConstraint?.constant = 44
+                } else {
+                    titleLabelHeightConstraint?.constant = 20
+                }
+            }
             
 
         }
@@ -46,6 +59,7 @@ class VideoCell: BaseCell {
     var titleLabel: UILabel = {
         let label = UILabel()
         label.backgroundColor = .clear
+        label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -75,6 +89,8 @@ class VideoCell: BaseCell {
         return  view
     }()
     
+    var titleLabelHeightConstraint: NSLayoutConstraint?
+    
     
     override func setupViews() {
         //add subviews
@@ -89,7 +105,7 @@ class VideoCell: BaseCell {
         addConstraintsWithFormat(format: "H:|-16-[v0]-16-|", views: thumbnailImageView)
         addConstraintsWithFormat(format: "H:|-16-[v0(44)]", views: profileImageView)
         addConstraintsWithFormat(format: "H:|[v0]|", views: separatorLine)
-        addConstraintsWithFormat(format: "V:|-16-[v0]-8-[v1(44)]-16-[v2(1)]|", views: thumbnailImageView, profileImageView, separatorLine)
+        addConstraintsWithFormat(format: "V:|-16-[v0]-8-[v1(44)]-36-[v2(1)]|", views: thumbnailImageView, profileImageView, separatorLine)
 
         //top constraint for the titlelabel
         //v1:
@@ -113,7 +129,9 @@ class VideoCell: BaseCell {
         //v1:
         //        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 20))
         //v2:
-        titleLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        titleLabelHeightConstraint = NSLayoutConstraint(item: titleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 20)
+        addConstraint(titleLabelHeightConstraint!)
+        
         
         
         
@@ -152,14 +170,3 @@ extension UIView {
 
     }
 }
-
-
-
-
-
-
-
-
-
-
-

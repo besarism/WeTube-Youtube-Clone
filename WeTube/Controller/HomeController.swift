@@ -40,7 +40,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         let wwdc =  Video()
         wwdc.channel = appleChannel
         wwdc.thumbnailImage = "wwdcThumbnail"
-        wwdc.title = "WWDC Event - 2016"
+        wwdc.title = "WWDC Event - Apple's World Wide Developers Conference 2016"
         wwdc.views = 7236274
         
         let mobombat =  Video()
@@ -111,7 +111,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellHeight = (view.frame.width - 16 - 16) * 9 / 16
-        return CGSize(width: view.frame.width, height: cellHeight + 75)
+        return CGSize(width: view.frame.width, height: cellHeight + 75 + 12 + 8)
     }
     
 
