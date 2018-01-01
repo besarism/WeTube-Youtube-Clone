@@ -56,6 +56,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     override func viewDidLoad() {
         super.viewDidLoad()
         //collectionView:
+        fetchVideos()
         collectionView?.backgroundColor = .white
         collectionView?.contentInset = UIEdgeInsetsMake(50, 0, 0, 0)
         collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0)
@@ -75,6 +76,35 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 
     
     //Methods:
+    
+    
+    // TODO: fetchVideos
+    func fetchVideos() {
+        let url = URL(string: "https://s3-us-west-2.amazonaws.com/youtubeassets/home.json")
+        
+        let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
+            //Error:
+            if error != nil {
+                print(error ?? "Error: No idea")
+                return
+            }
+            
+            //Everything is OK:
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
+                //loop through JSON object
+                for dictionary in json as! [[String: AnyObject]] {
+                    print(dictionary["title"])
+                }
+            } catch let error {
+                print (error)
+            }
+            
+        }
+        task.resume()
+        
+
+    }
     
     private func setupMenuBar() {
         view.addSubview(menuBar)
