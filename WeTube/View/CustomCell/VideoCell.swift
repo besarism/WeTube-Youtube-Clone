@@ -14,12 +14,9 @@ class VideoCell: BaseCell {
     var video: Video? {
         didSet {
             
-            if let thmbnImage = video?.thumbnailImage {
-                thumbnailImageView.image = UIImage(named: thmbnImage)
-            }
-            if let prflImage = video?.channel?.profileImage {
-                profileImageView.image = UIImage(named: prflImage)
-            }
+            thumbnailImageView.setupImage(video?.thumbnailImage)
+            profileImageView.setupImage(video?.channel?.profileImage)
+            
             titleLabel.text = video?.title
             //safely unwrapp the name of the channel and the number of views
             if let channelName = video?.channel?.name, let numberOfViews = video?.views {
@@ -46,8 +43,10 @@ class VideoCell: BaseCell {
     }
     
     
-    var thumbnailImageView: UIImageView = {
-        let imageView = UIImageView()
+    
+    //Views:
+    var thumbnailImageView: CustomImageView = {
+        let imageView = CustomImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         
@@ -74,10 +73,11 @@ class VideoCell: BaseCell {
         return textView
     }()
     
-    var profileImageView: UIImageView = {
-        let imageView = UIImageView(image: #imageLiteral(resourceName: "b3profile"))
+    var profileImageView: CustomImageView = {
+        let imageView = CustomImageView(image: #imageLiteral(resourceName: "b3profile"))
         imageView.layer.cornerRadius = 22
         imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFill
         
         return imageView
     }()

@@ -35,6 +35,31 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
         collectionView.selectItem(at: firstMenuItem, animated: false, scrollPosition: [])
     }
     
+    var horizontalBarLeftConstraint: NSLayoutConstraint?
+    
+    func setupHorizontalBar() {
+        let horizontalBar: UIView = {
+            let view = UIView()
+            view.backgroundColor = .white
+            view.translatesAutoresizingMaskIntoConstraints = false
+            
+            return view
+        }()
+        
+        addSubview(horizontalBar)
+        horizontalBarLeftConstraint = horizontalBar.leftAnchor.constraint(equalTo: self.leftAnchor)
+        horizontalBarLeftConstraint?.isActive = true
+        horizontalBar.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        horizontalBar.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1/4).isActive = true
+        horizontalBar.heightAnchor.constraint(equalToConstant: 4).isActive = true
+        
+    }
+    
+    
+    
+    
+    
+    // TODO: - CollectionView
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 4
@@ -56,11 +81,21 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     }
 
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath.item)
+        let x = CGFloat(indexPath.item) * frame.width / 4
+        horizontalBarLeftConstraint?.constant = x
+        
+        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.layoutIfNeeded()
+        }, completion: nil)
+    }
     
     //Inits
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupCollectionView()
+        setupHorizontalBar()
     }
     
     required init?(coder aDecoder: NSCoder) {

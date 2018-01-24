@@ -20,38 +20,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         return mb
     }()
     
-    let videos: [Video] = {
-        //Channels:
-        
-        let appleChannel = Channel()
-        appleChannel.name =  "Apple Inc"
-        appleChannel.profileImage = "appleprofile"
-        
-        let b3Channel = Channel()
-        b3Channel.name =  "B3 Apps"
-        b3Channel.profileImage = "b3profile"
-        
-        
-        //==============================================
-        
-        
-        //Videos:
-        
-        let wwdc =  Video()
-        wwdc.channel = appleChannel
-        wwdc.thumbnailImage = "wwdcThumbnail"
-        wwdc.title = "WWDC Event - Apple's World Wide Developers Conference 2016"
-        wwdc.views = 7236274
-        
-        let mobombat =  Video()
-        mobombat.channel = b3Channel
-        mobombat.thumbnailImage = "mobombatThumbnail"
-        mobombat.title = "Mo Bombat - B3 Apps"
-        mobombat.views = 4326
-        
-        return [wwdc, mobombat]
-    }()
-    
+    var videos: [Video]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,6 +41,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         setupMenuBar()
         setupNavBarButtons()
         
+
     }
 
     
@@ -80,36 +50,34 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     // TODO: fetchVideos
     func fetchVideos() {
-        let url = URL(string: "https://s3-us-west-2.amazonaws.com/youtubeassets/home.json")
-        
-        let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
-            //Error:
-            if error != nil {
-                print(error ?? "Error: No idea")
-                return
-            }
-            
-            //Everything is OK:
-            do {
-                let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
-                //loop through JSON object
-                for dictionary in json as! [[String: AnyObject]] {
-                    print(dictionary["title"])
-                }
-            } catch let error {
-                print (error)
-            }
-            
+        ApiService.sharedInstance.fetchVideos { (videos: [Video]) in
+            self.videos = videos
+            self.collectionView?.reloadData()
         }
-        task.resume()
         
-
     }
     
     private func setupMenuBar() {
+        
+        let redBackgroundView: UIView = {
+            let view = UIView()
+            view.backgroundColor = UIColor(red: 230/255, green: 32/255, blue: 31/255, alpha: 1.0)
+            
+            return view
+        }()
+        
+        view.addSubview(redBackgroundView)
+        view.addConstraintsWithFormat(format: "H:|[v0]|", views: redBackgroundView)
+        view.addConstraintsWithFormat(format: "V:[v0(50)]", views: redBackgroundView)
+        
+        
         view.addSubview(menuBar)
         view.addConstraintsWithFormat(format: "H:|[v0]|", views: menuBar)
-        view.addConstraintsWithFormat(format: "V:|[v0(50)]", views: menuBar)
+        view.addConstraintsWithFormat(format: "V:[v0(50)]", views: menuBar)
+        let guide = view.safeAreaLayoutGuide
+        navigationController?.hidesBarsOnSwipe = true
+        menuBar.topAnchor.constraint(equalTo: guide.topAnchor).isActive = true
+        
     }
     
     private func setupNavBarButtons() {
@@ -123,19 +91,34 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     @objc func searchButton() {
         print("Search")
     }
-    
+    lazy var settingsLauncher: SettingsLauncher = {
+        let settingsLauncher = SettingsLauncher()
+        settingsLauncher.homeController = self
+        
+        return settingsLauncher
+    }()
     @objc func moreButton() {
-        print("More")
+        settingsLauncher.showSettings()
+    }
+    
+    func showController(For setting: Setting) {
+        let dummyViewController = UIViewController()
+        dummyViewController.view.backgroundColor = .white
+        dummyViewController.navigationItem.title = setting.name.rawValue
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        navigationController?.pushViewController(dummyViewController, animated: true)
     }
 
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return videos.count
+        
+        return videos?.count ?? 0
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! VideoCell
-        cell.video = videos[indexPath.item]
+        cell.video = videos?[indexPath.item]
         return cell
     }
     
@@ -145,6 +128,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
 
-
+    func draw() {
+        print("drawing")
+    }
 }
 
