@@ -23,7 +23,7 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     }()
     
     let menuItems =  ["home", "trending", "subscriptions", "account"]
-    
+    var homeController: HomeController?
     
     func setupCollectionView() {
         addSubview(collectionView)
@@ -82,13 +82,7 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
 
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.item)
-        let x = CGFloat(indexPath.item) * frame.width / 4
-        horizontalBarLeftConstraint?.constant = x
-        
-        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.layoutIfNeeded()
-        }, completion: nil)
+        homeController?.scrolltoMenuIndex(at: indexPath.item)
     }
     
     //Inits

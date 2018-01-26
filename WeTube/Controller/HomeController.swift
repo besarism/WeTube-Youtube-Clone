@@ -14,8 +14,9 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     fileprivate let cellId = "cellId"
     
-    let menuBar: MenuBar = {
+    lazy var menuBar: MenuBar = {
         let mb = MenuBar()
+        mb.homeController = self
         
         return mb
     }()
@@ -122,8 +123,26 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         navigationController?.pushViewController(dummyViewController, animated: true)
     }
     
+    func scrolltoMenuIndex(at Index: Int) {
+        let indexPath = IndexPath(item: Index, section: 0)
+        collectionView?.scrollToItem(at: indexPath, at: [], animated: true)
+    }
+    
+    
+    
     
     //MARK: CollectionView
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        menuBar.horizontalBarLeftConstraint?.constant = scrollView.contentOffset.x / 4
+    }
+    
+    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        print(targetContentOffset.pointee.x)
+        let index = Int(targetContentOffset.pointee.x / view.frame.width)
+        let indexPath = IndexPath(item: index, section: 0)
+        menuBar.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .left)
+    }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 4
@@ -131,15 +150,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-        if indexPath.item == 0 {
-            cell.backgroundColor = .white
-        } else if indexPath.item == 1 {
-            cell.backgroundColor = .red
-        } else if indexPath.item == 2 {
-            cell.backgroundColor = .yellow
-        } else {
-            cell.backgroundColor = .blue
-        }
+        let colors: [UIColor] = [.green, .yellow, .red, .blue]
+        cell.backgroundColor = colors[indexPath.item]
         
         return cell
     }
