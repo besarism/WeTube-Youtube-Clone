@@ -11,9 +11,9 @@ import UIKit
 class ApiService: NSObject {
     
     static let sharedInstance = ApiService()
-    
-    func fetchVideos(completion: @escaping ([Video]) -> ()) {
-        let url = URL(string: "http://www.ibelian.com/Services/API/json/kOpfek35WKWdfwkg/home.json")
+
+    func fetchVideos(stringURL: String, completion: @escaping ([Video]) -> ()) {
+        let url = URL(string: stringURL)
         
         let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
             //Error:
@@ -29,10 +29,10 @@ class ApiService: NSObject {
                 //loop through JSON object
                 for dictionary in json as! [[String: AnyObject]] {
                     let video = Video()
-                    (dictionary["title"] as? String)
                     video.title = dictionary["title"] as? String
                     video.thumbnailImage = dictionary["thumbnail_image_name"] as? String
-                    //                    video.views = dictionary["description"] as? String
+                    video.views = dictionary["number_of_views"] as? NSNumber
+                    
                     let channelDictionary = dictionary["channel"] as! [String: AnyObject]
                     let channel = Channel()
                     channel.name = channelDictionary["name"] as? String

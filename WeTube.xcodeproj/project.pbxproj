@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		A237B62E2007DD5800BB3CCE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A237B62D2007DD5800BB3CCE /* Extensions.swift */; };
 		A24AFD042017ADE200C4CBEC /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24AFD032017ADE200C4CBEC /* ApiService.swift */; };
+		A24AFD07201CB25900C4CBEC /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24AFD06201CB25900C4CBEC /* FeedCell.swift */; };
+		A24AFD09201CE66E00C4CBEC /* TrendingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24AFD08201CE66E00C4CBEC /* TrendingCell.swift */; };
+		A24AFD0B201CEA5100C4CBEC /* SubscriptionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24AFD0A201CEA5100C4CBEC /* SubscriptionsCell.swift */; };
 		A2ACA402200914510036643D /* SettingsLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACA401200914510036643D /* SettingsLauncher.swift */; };
 		A2ACA404200A81E40036643D /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACA403200A81E40036643D /* SettingCell.swift */; };
 		A2ACA406200B7F8E0036643D /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACA405200B7F8E0036643D /* Setting.swift */; };
@@ -28,6 +31,9 @@
 /* Begin PBXFileReference section */
 		A237B62D2007DD5800BB3CCE /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		A24AFD032017ADE200C4CBEC /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		A24AFD06201CB25900C4CBEC /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
+		A24AFD08201CE66E00C4CBEC /* TrendingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingCell.swift; sourceTree = "<group>"; };
+		A24AFD0A201CEA5100C4CBEC /* SubscriptionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsCell.swift; sourceTree = "<group>"; };
 		A2ACA401200914510036643D /* SettingsLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLauncher.swift; sourceTree = "<group>"; };
 		A2ACA403200A81E40036643D /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		A2ACA405200B7F8E0036643D /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
@@ -128,9 +134,12 @@
 		A2D78E661FF01FEB00842887 /* CustomCell */ = {
 			isa = PBXGroup;
 			children = (
-				A2BFB9CD1FED867F00EAC5AE /* VideoCell.swift */,
 				A2D78E601FEFF75A00842887 /* MenuCell.swift */,
 				A2ACA403200A81E40036643D /* SettingCell.swift */,
+				A24AFD06201CB25900C4CBEC /* FeedCell.swift */,
+				A2BFB9CD1FED867F00EAC5AE /* VideoCell.swift */,
+				A24AFD08201CE66E00C4CBEC /* TrendingCell.swift */,
+				A24AFD0A201CEA5100C4CBEC /* SubscriptionsCell.swift */,
 			);
 			path = CustomCell;
 			sourceTree = "<group>";
@@ -219,12 +228,15 @@
 			files = (
 				A2BFB9BD1FED823500EAC5AE /* HomeController.swift in Sources */,
 				A237B62E2007DD5800BB3CCE /* Extensions.swift in Sources */,
+				A24AFD09201CE66E00C4CBEC /* TrendingCell.swift in Sources */,
 				A2ACA406200B7F8E0036643D /* Setting.swift in Sources */,
 				A2D78E6B1FF023D700842887 /* Channel.swift in Sources */,
 				A2D78E611FEFF75A00842887 /* MenuCell.swift in Sources */,
 				A2ACA404200A81E40036643D /* SettingCell.swift in Sources */,
 				A2BFB9BB1FED823500EAC5AE /* AppDelegate.swift in Sources */,
+				A24AFD07201CB25900C4CBEC /* FeedCell.swift in Sources */,
 				A2D78E5F1FEFEBFB00842887 /* MenuBar.swift in Sources */,
+				A24AFD0B201CEA5100C4CBEC /* SubscriptionsCell.swift in Sources */,
 				A2ACA402200914510036643D /* SettingsLauncher.swift in Sources */,
 				A2D78E631FEFF77400842887 /* BaseCell.swift in Sources */,
 				A24AFD042017ADE200C4CBEC /* ApiService.swift in Sources */,
