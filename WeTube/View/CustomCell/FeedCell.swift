@@ -36,7 +36,7 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
         
         
     }
-    
+//    http://www.ibelian.com/Services/API/json/kOpfek35WKWdfwkg/home.json"
     // MARK: fetchVideos
     func fetchVideos() {
         ApiService.sharedInstance.fetchVideos(stringURL: "http://www.ibelian.com/Services/API/json/kOpfek35WKWdfwkg/home.json") { (videos: [Video]) in

@@ -1,4 +1,4 @@
-//
+ //
 //  VideoCell.swift
 //  WeTube
 //
@@ -14,15 +14,15 @@ class VideoCell: BaseCell {
     var video: Video? {
         didSet {
             
-            thumbnailImageView.setupImage(video?.thumbnailImage)
-            profileImageView.setupImage(video?.channel?.profileImage)
+            thumbnailImageView.setupImage(video?.thumbnail_image_name)
+            profileImageView.setupImage(video?.channel?.profile_image_name)
             
             titleLabel.text = video?.title
             //safely unwrapp the name of the channel and the number of views
-            if let channelName = video?.channel?.name, let numberOfViews = video?.views {
+            if let channelName = video?.channel?.name, let numberOfViews = video?.number_of_views {
                 let numberFormatter = NumberFormatter()
                 numberFormatter.numberStyle = .decimal
-                descriptionTextView.text = "\(channelName) • \(numberFormatter.string(from: numberOfViews)!) • 1 year ago"
+                descriptionTextView.text = "\(channelName) • \(numberFormatter.string(from: NSNumber(value: numberOfViews))!) • 1 year ago"
             }
             
             //fix the title of the video by measuring the height
