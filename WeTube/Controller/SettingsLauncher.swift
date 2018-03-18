@@ -73,7 +73,7 @@ class SettingsLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDe
             }
             
         }) { (completed: Bool) in
-            if setting.name != .cancel {
+            if setting.name != .cancel || setting.name != nil {
                 self.homeController?.showController(For: setting)
             }
         }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A237B62E2007DD5800BB3CCE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A237B62D2007DD5800BB3CCE /* Extensions.swift */; };
+		A2442CE0205F045700F480A7 /* VideoLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2442CDF205F045700F480A7 /* VideoLauncher.swift */; };
 		A24AFD042017ADE200C4CBEC /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24AFD032017ADE200C4CBEC /* ApiService.swift */; };
 		A24AFD07201CB25900C4CBEC /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24AFD06201CB25900C4CBEC /* FeedCell.swift */; };
 		A24AFD09201CE66E00C4CBEC /* TrendingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24AFD08201CE66E00C4CBEC /* TrendingCell.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		A237B62D2007DD5800BB3CCE /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		A2442CDF205F045700F480A7 /* VideoLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoLauncher.swift; sourceTree = "<group>"; };
 		A24AFD032017ADE200C4CBEC /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		A24AFD06201CB25900C4CBEC /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		A24AFD08201CE66E00C4CBEC /* TrendingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingCell.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				A2BFB9C11FED823500EAC5AE /* Assets.xcassets */,
 				A2BFB9C31FED823500EAC5AE /* LaunchScreen.storyboard */,
 				A237B62D2007DD5800BB3CCE /* Extensions.swift */,
+				A2442CDF205F045700F480A7 /* VideoLauncher.swift */,
 			);
 			path = "Support Files";
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 				A2D78E631FEFF77400842887 /* BaseCell.swift in Sources */,
 				A24AFD042017ADE200C4CBEC /* ApiService.swift in Sources */,
 				A2D78E681FF0204500842887 /* Video.swift in Sources */,
+				A2442CE0205F045700F480A7 /* VideoLauncher.swift in Sources */,
 				A2BFB9CE1FED867F00EAC5AE /* VideoCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

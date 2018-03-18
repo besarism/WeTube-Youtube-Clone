@@ -22,6 +22,7 @@ class ApiService: NSObject {
                 return
             }
             var videos = [Video]()
+            
             //15 lines of code replaced with 2 lines of code
             do {
                 try videos = JSONDecoder().decode([Video].self, from: data!)
@@ -56,6 +57,13 @@ class ApiService: NSObject {
  video.channel = channel
  
  videos.append(video)
+ 
+ vs new version:
+ 
+ do {
+ try videos = JSONDecoder().decode([Video].self, from: data!)
+ } catch let error { print(error) }
+
 
  
  */

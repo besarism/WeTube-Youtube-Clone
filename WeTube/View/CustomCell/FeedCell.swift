@@ -36,7 +36,7 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
         
         
     }
-//    http://www.ibelian.com/Services/API/json/kOpfek35WKWdfwkg/home.json"
+    //http://www.ibelian.com/Services/API/json/kOpfek35WKWdfwkg/home.json
     // MARK: fetchVideos
     func fetchVideos() {
         ApiService.sharedInstance.fetchVideos(stringURL: "http://www.ibelian.com/Services/API/json/kOpfek35WKWdfwkg/home.json") { (videos: [Video]) in
@@ -60,7 +60,10 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
         return CGSize(width: frame.width, height: cellHeight + 75 + 12 + 8)
     }
 
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let videoLauncher = VideoLauncher()
+        videoLauncher.showVideoPlayer()
+    }
     
     
 }
