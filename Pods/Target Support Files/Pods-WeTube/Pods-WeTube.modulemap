@@ -1,0 +1,6 @@
+framework module Pods_WeTube {
+  umbrella header "Pods-WeTube-umbrella.h"
+
+  export *
+  module * { export * }
+}
