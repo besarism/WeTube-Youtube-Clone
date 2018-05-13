@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
@@ -176,5 +177,23 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     func draw() {
         print("drawing")
     }
+    
+//    func giveMeTheFlights() {
+//        let url = "http://127.0.0.1:5000/api/flights/1"
+//        Alamofire.request(url).responseJSON { (response) in
+//            guard response.result.error == nil else {
+//                print(response.result.error!)
+//                return
+//            }
+//
+//            if let value = response.result.value {
+//                if let jsonDictionary = value as? [String:AnyObject] {
+//                    print(jsonDictionary)
+//                }
+//            }
+//
+//        }
+//    }
+    
 }
 
